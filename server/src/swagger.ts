@@ -7,7 +7,7 @@ export const swaggerDocumentOptions = new DocumentBuilder()
   .setDescription(
     'Exploration of server-side rendering in the Amplication sample application for e-commerce\n\n## Congratulations! Your application is ready.\n  \nPlease note that all endpoints are secured with JWT Bearer authentication.\nBy default, your app comes with one user with the username "admin" and password "admin".\nLearn more in [our docs](https://docs.amplication.com)'
   )
-  .setVersion("i1mrksa8")
+  .setVersion("2n6uzz5u")
   .addBearerAuth()
   .build();
 
