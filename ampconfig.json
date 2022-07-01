@@ -1,0 +1,19 @@
+{
+  "dataServiceGeneratorVersion": "0.13.1",
+  "appInfo": {
+    "name": "Amplication SSR Experiment",
+    "description": "Exploration of server-side rendering in the Amplication sample application for e-commerce",
+    "version": "i1mrksa8",
+    "id": "cl52i36h716784401l9jjfe7mp2",
+    "url": "https://server.amplication.com/cl52i36h716784401l9jjfe7mp2",
+    "settings": {
+      "dbHost": "localhost",
+      "dbName": "",
+      "dbPassword": "admin",
+      "dbPort": 5432,
+      "dbUser": "admin",
+      "appId": "cl52i36h716784401l9jjfe7mp2",
+      "authProvider": "Jwt"
+    }
+  }
+}
