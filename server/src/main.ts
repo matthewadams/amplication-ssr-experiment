@@ -1,23 +1,38 @@
-import { ValidationPipe } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
-import { OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
+import {RequestMethod, ValidationPipe} from "@nestjs/common";
+import {NestFactory} from "@nestjs/core";
+import {NestExpressApplication} from '@nestjs/platform-express';
+import {OpenAPIObject, SwaggerModule} from "@nestjs/swagger";
 // @ts-ignore
 // eslint-disable-next-line
-import { AppModule } from "./app.module";
-import {
-  swaggerPath,
-  swaggerDocumentOptions,
-  swaggerSetupOptions,
-  // @ts-ignore
-  // eslint-disable-next-line
-} from "./swagger";
+import {AppModule} from "./app.module";
+import {swaggerDocumentOptions, swaggerPath, swaggerSetupOptions,} from "./swagger";
+import {join} from "path"
 
-const { PORT = 3000 } = process.env;
+const {PORT = 3000} = process.env;
 
 async function main() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create
+    // MVC
+    < NestExpressApplication >
+    // MVC
+    (AppModule, {cors: true});
 
-  app.setGlobalPrefix("api");
+  // MVC --
+  app.setViewEngine('hbs'); // TODO: config
+  app.setBaseViewsDir(join(__dirname, "mvc", "views")); // TODO: config
+  // MVC
+
+  app.setGlobalPrefix("api"
+    // MVC
+    , {
+      exclude: [{
+        path: "ui",
+        method: RequestMethod.ALL
+      }]
+    }
+    // MVC
+  );
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

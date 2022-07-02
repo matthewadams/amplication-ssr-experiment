@@ -1,6 +1,9 @@
 {
   "sourceRoot": "src",
   "compilerOptions": {
-    "assets": ["swagger"]
+    "assets": [
+      "swagger",
+      "mvc"
+    ]
   }
 }

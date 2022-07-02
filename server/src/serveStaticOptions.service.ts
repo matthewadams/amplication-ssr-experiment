@@ -1,6 +1,6 @@
 import * as path from "path";
-import { Injectable, Logger } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
+import {Injectable, Logger} from "@nestjs/common";
+import {ConfigService} from "@nestjs/config";
 import {
   ServeStaticModuleOptions,
   ServeStaticModuleOptionsFactory,
@@ -12,6 +12,12 @@ const DEFAULT_STATIC_MODULE_OPTIONS_LIST: ServeStaticModuleOptions[] = [
     serveRoot: "/swagger",
     rootPath: path.join(__dirname, "swagger"),
   },
+  // MVC
+  {
+    serveRoot: "/static",
+    rootPath: path.join(__dirname, "mvc", "static"),
+  },
+  // MVC
 ];
 
 @Injectable()
@@ -19,7 +25,8 @@ export class ServeStaticOptionsService
   implements ServeStaticModuleOptionsFactory {
   private readonly logger = new Logger(ServeStaticOptionsService.name);
 
-  constructor(private readonly configService: ConfigService) {}
+  constructor(private readonly configService: ConfigService) {
+  }
 
   createLoggerOptions(): ServeStaticModuleOptions[] {
     const serveStaticRootPath = this.configService.get(
@@ -30,7 +37,7 @@ export class ServeStaticOptionsService
       this.logger.log(`Serving static files from ${resolvedPath}`);
       return [
         ...DEFAULT_STATIC_MODULE_OPTIONS_LIST,
-        { rootPath: resolvedPath, exclude: ["/api*", "/graphql"] },
+        {rootPath: resolvedPath, exclude: ["/api*", "/graphql"]},
       ];
     }
     return DEFAULT_STATIC_MODULE_OPTIONS_LIST;
