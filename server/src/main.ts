@@ -17,7 +17,7 @@ async function main() {
     // MVC
     (AppModule, {cors: true});
 
-  // MVC --
+  // MVC
   app.setViewEngine('hbs'); // TODO: config
   app.setBaseViewsDir(join(__dirname, "mvc", "views")); // TODO: config
   // MVC
@@ -26,7 +26,7 @@ async function main() {
     // MVC
     , {
       exclude: [{
-        path: "ui",
+        path: "/ui/*",
         method: RequestMethod.ALL
       }]
     }
